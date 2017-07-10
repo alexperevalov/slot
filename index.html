@@ -2,40 +2,37 @@
 <html>
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Slot Machine in Javascript</title>
-	<meta name="description" content="Welcome to the Javascript version of Slot Machine written by Saurabh Odhyan">
-	<meta name="keywords" content="javascript, jquery, spritely, animation, sprite, background position, slot, game, games, saurabh, odhyan">
+	<title>Video Roulette</title>
 	<style>
 	body {
-		font-family:verdana,arial;
-		padding:20px;
+		font-family: verdana,arial;
+		padding: 20px;
 	}
 	.bd {
-		text-align:center;
+		text-align: center;
 	}
 	.container {
-		margin:0 auto;
-		width:266px;
+		margin: 0 auto;
+		width: 368px;
 	}
 	.slot-wrapper {
-		 border: 1px solid #000000;
+		height: 92px;
+		border: 1px solid #000000;
+		position: relative;
+		overflow: hidden;
 	}
 	.slot {
-		background:url("images/reel_normal.png") repeat-y; /*Taken from http://www.swish-designs.co.uk*/
-		width:86px;
-		height:70px;
-		float:left;
-		border:1px solid #000;
-		background-position:0 4px;
-	}
-	.motion {
-		background:url("images/reel_blur.png") repeat-y; /*Taken from http://www.swish-designs.co.uk*/
+		width: 120px;
+		float: left;
+		border: 1px solid rgba(0, 0, 0, .1);
+		-position: absolute;
+		-z-index: -1;
 	}
 	button {
 		display:block;
 		width:138px;
 		height:33px;
-		margin:20px 60px;
+		margin:20px auto;
 		font-size:16px;
 		cursor:pointer;
 	}
@@ -45,23 +42,13 @@
 		font-weight:bold;
 		height:22px;
 	}
-	.credits {
-		font-size:15px;
-		margin-top:20px;
-	}
-	.credits .browsers {
-		font-style:italic;
-		font-size:14px;
-		color:#777;
-		margin-top:4px;
-	}
 	.clear {
 		clear:both;
 	}
 	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script src="jquery.spritely.js"></script>
-	<script src="jquery.backgroundPosition.js"></script>
+	<script src="roulette.js"></script>
+	<script src="data.js"></script>
 	<script src="slot.js"></script>
 	</head>
 
@@ -69,7 +56,7 @@
 		<div class="hd">
 		</div>
 		<div class="bd">
-			<h1>Slot machine in Javascript</h1>
+			<h1>Video Roulette (Slot machine)</h1>
 			<div class="container">
 				<div class="slot-wrapper">
 					<div id="slot1" class="slot"></div>
