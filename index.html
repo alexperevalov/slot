@@ -1,71 +1,69 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Video Roulette</title>
-	<style>
-	body {
-		font-family: verdana,arial;
-		padding: 20px;
-	}
-	.bd {
-		text-align: center;
-	}
-	.container {
-		margin: 0 auto;
-		width: 368px;
-	}
-	.slot-wrapper {
-		height: 92px;
-		border: 1px solid #000000;
-		position: relative;
-		overflow: hidden;
-	}
-	.slot {
-		width: 120px;
-		float: left;
-		border: 1px solid rgba(0, 0, 0, .1);
-		-position: absolute;
-		-z-index: -1;
-	}
-	button {
-		display:block;
-		width:138px;
-		height:33px;
-		margin:20px auto;
-		font-size:16px;
-		cursor:pointer;
-	}
-	#result {
-		margin:20px 0;
-		font-size:18px;
-		font-weight:bold;
-		height:22px;
-	}
-	.clear {
-		clear:both;
-	}
-	</style>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script src="roulette.js"></script>
-	<script src="data.js"></script>
-	<script src="slot.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Video Roulette</title>
+		<link rel="stylesheet" href="solid.2.7.0.min.css">
+		<style>
+			body {
+				font-family: verdana,arial;
+				padding: 20px;
+			}
+			.bd {
+				text-align: center;
+			}
+			.container {
+				margin: 0 auto;
+				width: 602px;
+			}
+			.slot-wrapper {
+				height: 92px;
+				border: 1px solid #000000;
+				position: relative;
+				overflow: hidden;
+			}
+			.slot {
+				width: 120px;
+				float: left;
+				border: 1px solid rgba(0, 0, 0, .1);
+			}
+			.result {
+				margin:20px 0;
+				font-size:18px;
+				font-weight:bold;
+				height:22px;
+			}
+			.clear {
+				clear:both;
+			}
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+		<script src="roulette.js"></script>
+		<script src="data.js"></script>
+		<script src="slot.js"></script>
 	</head>
 
 	<body>
 		<div class="hd">
 		</div>
 		<div class="bd">
-			<h1>Video Roulette (Slot machine)</h1>
+			<h1 class="xs-my4">Video Roulette</h1>
 			<div class="container">
 				<div class="slot-wrapper">
 					<div id="slot1" class="slot"></div>
 					<div id="slot2" class="slot"></div>
 					<div id="slot3" class="slot"></div>
-					<div class="clear"></div>
+					<div id="slot4" class="slot"></div>
+					<div id="slot5" class="slot"></div>
 				</div>
-				<div id="result"></div>
-				<div><button id="control">Start</button></div>
+				<div class="result">
+					<span id="slot1_result">&nbsp;</span>:
+					<span id="slot2_result">&nbsp;</span>:
+					<span id="slot3_result">&nbsp;</span>:
+					<span id="slot4_result">&nbsp;</span>:
+					<span id="slot5_result">&nbsp;</span>
+				</div>
+				<div><button class="button xs-text-2 xs-py2 xs-px5" id="control">Start</button></div>
 			</div>
 		</div>
 	</body>

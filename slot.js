@@ -31,10 +31,12 @@ $(document).ready(function() {
             duration : 10,
             stopImageNumber : null,
             startCallback : function() {
-                console.log('start ' + el);
+                // console.log('start ' + el);
             },
             stopCallback : function($stopElm) {
                 console.log('stop ' + el, 'won id: ' + $($stopElm[0]).attr("data-id"));
+                var sel = el + '_result';
+                $(sel).html($($stopElm[0]).attr("data-id"));
             }});
     }
 
@@ -42,61 +44,70 @@ $(document).ready(function() {
     * @method start
     * Starts a slot
     */
-    Slot.prototype.start = function() {
-        $(this.el).roulette("start");
+    Slot.prototype.start = function(timeout) {
+        var _this = this;
+        setTimeout(function() {
+            $(_this.el).roulette("start");
+        }, timeout || 0);
     };
 
     /**
     * @method stop
     * Stops a slot
     */
-    Slot.prototype.stop = function() {
-        $(this.el).roulette("stop");
+    Slot.prototype.stop = function(timeout) {
+        var _this = this;
+        setTimeout(function() {
+            $(_this.el).roulette("stop");
+        }, timeout || 0);
     };
 
     function enableControl() {
-        $('#control').attr("disabled", false);
+        $('#control').attr("disabled", false).toggleClass("button--disabled");
     }
 
     function disableControl() {
-        $('#control').attr("disabled", true);
-    }
-
-    function printResult() {
-        var res;
-        res = "You Won!";
-        $('#result').html(res);
+        $('#control').attr("disabled", true).toggleClass("button--disabled");
     }
 
     //create slot objects
-    var a = new Slot('#slot1', window.data.slot1, 10),
-        b = new Slot('#slot2', window.data.slot2, 20),
-        c = new Slot('#slot3', window.data.slot3, 30);
+    var slots = [];
+    slots[0] = new Slot('#slot1', window.data.slot1, 6);
+    slots[1] = new Slot('#slot2', window.data.slot2, 10);
+    slots[2] = new Slot('#slot3', window.data.slot3, 12);
+    slots[3] = new Slot('#slot4', window.data.slot3, 15);
+    slots[4] = new Slot('#slot5', window.data.slot3, 10);
 
+    var timeout;
     /**
     * Slot machine controller
     */
     $('#control').click(function() {
         if(this.innerHTML == "Start") {
-            a.start();
-            setTimeout(function() {b.start()}, 250);
-            setTimeout(function() {c.start()}, 500);
+            timeout = 0;
+            slots.forEach(function(slot) {
+                slot.start(timeout);
+                timeout += 250;
+            });
             this.innerHTML = "Stop";
+            $(this).addClass("button--youtube");
             
             disableControl(); //disable control until the slots reach max speed
             setTimeout(function() {enableControl()}, 2000);
             
         } else if(this.innerHTML == "Stop") {
-            a.stop();
-            setTimeout(function() {b.stop()}, 500);
-            setTimeout(function() {c.stop()}, 1000);
+            timeout = 0;
+            slots.forEach(function(slot) {
+                slot.stop(timeout);
+                timeout += 250;
+            });
             this.innerHTML = "Start";
+            $(this).removeClass("button--youtube");
 
             disableControl(); //disable control until the slots stop
             setTimeout(function() {
                 enableControl();
-                printResult();
-            }, 1000);
+            }, 1500);
         }
     });
 });
